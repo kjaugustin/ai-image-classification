@@ -59,12 +59,9 @@ def main():
         train_file = sys.argv[2]
 
         if algo == 'nearest':
-            # train_dict = {}
-            # for line in map(lambda x: x.strip().split(), open(train_file)):
-            #     train_dict[(line[0], line[1])] = (line[1], np.array(map(normalize, line[2:])))
 
             model_nearest_file = open(model_file, 'wb')
-            # pickle.dump(train_dict, model_nearest_file)
+
             model_nearest_file.close()
 
             print "Training Data for knn classifier is complete. Please run the model on test data using the following command: "
@@ -118,7 +115,7 @@ def main():
             for line in map(lambda x: x.strip().split(), open(train_file)):
                 train_dict[(line[0], line[1])] = (line[1], line[2:])
             nnet_train(train_dict, no_inputs, no_hidden, no_outputs, no_iterations, learning_rate, model_file)
-            #shutil.copy2("nnet_model.txt", model_file)
+
     elif switch == 'test':
         test_file = sys.argv[2]
 
@@ -128,11 +125,6 @@ def main():
             train_dict = {}
             for line in map(lambda x: x.strip().split(), open(train_file)):
                 train_dict[(line[0], line[1])] = (line[1], np.array(map(normalize, line[2:])))
-
-            # # reload model from file
-            # model_nearest_file = open(model_file, 'rb')
-            # train_dict = pickle.load(model_nearest_file)
-            # model_nearest_file.close()
 
             test_dict = {}
             for line in map(lambda x: x.strip().split(), open(test_file)):
@@ -184,7 +176,7 @@ def main():
                 adaboost_out = [output_0[i], output_90[i], output_180[i], output_270[i]]
                 max_index = adaboost_out.index(max(adaboost_out))
                 estimated_label = estimate(max_index)
-                # output_file.write(Name[i] + " " + estimated_label + " " + true_label[i] + "\n")
+
                 output_file.write(Name[i] + " " + estimated_label + "\n")
                 if (int(estimated_label) == int(true_label[i])):
                     count += 1
