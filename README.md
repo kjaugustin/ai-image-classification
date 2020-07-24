@@ -35,7 +35,7 @@ To test the model enter the following from the command line:
     ./orient.py test test_file.txt model_file.txt nnet
 ```
 
-All these classifiers were ran multiple times with different parameters to choose the best model based on accuracy. The best model parameters are stored in model.txt. 
+All these classifiers were ran multiple times with different parameters to choose the best model based on accuracy. The best model parameters are stored in model_file.txt. 
 
 To train with the best model enter the following from the command line: 
 ```
